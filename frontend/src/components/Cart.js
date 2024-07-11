@@ -20,6 +20,8 @@ import axios from '../api';
     try {
       const response = await axios.post('/api/payments/create-payment-intent', {
         amount: total * 100,
+      },{
+        withCredentials: true,
       });
 
       const { clientSecret } = response.data;
