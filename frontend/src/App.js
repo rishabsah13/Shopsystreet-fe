@@ -23,7 +23,7 @@ function App() {
 
   const fetchProducts = async () => {
     try {
-        const response = await axios.get('/api/products',{
+       const response = await axios.get('https://shopsystreet-8.onrender.com/api/products',{
         withCredentials: true,
       }); // Replace with your actual API endpoint
       setProducts(response.data);
