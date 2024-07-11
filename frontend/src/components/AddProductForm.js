@@ -12,7 +12,9 @@ const AddProductForm = ({ closeForm }) => {
     console.log('Form submitted with values:', { name, description, price });
 
     try {
-      const response = await axios.post('/products', { name, description, price });
+      const response = await axios.post('/api/products', { name, description, price },{
+        withCredentials: true,
+      });
 
       if (response.status === 201) {
         const product = response.data;
