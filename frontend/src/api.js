@@ -2,7 +2,8 @@ import axios from 'axios';
 
 axios.defaults.withCredentials=true
 const api = axios.create({
-  baseURL: 'https://shopsystreet-8.onrender.com/'
+  baseURL: 'https://shopsystreet-8.onrender.com/',
+  withCredentials: true,
 });
 
 export const getProducts = () => api.get('/products');
