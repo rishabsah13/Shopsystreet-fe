@@ -7,9 +7,10 @@ import { getProducts, createPaymentIntent, confirmPayment } from './api';
 import AddProductForm from './components/AddProductForm';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import axios from "./api"
+import axios from "axios"
 
 function App() {
+  const API_URL = process.env.REACT_APP_API_URL;
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
@@ -23,7 +24,7 @@ function App() {
 
   const fetchProducts = async () => {
     try {
-       const response = await axios.get('https://shopsystreet-8.onrender.com/api/products',{
+       const response = await axios.get(`${API_URL}/api/products,{
         withCredentials: true,
       }); // Replace with your actual API endpoint
       setProducts(response.data);
