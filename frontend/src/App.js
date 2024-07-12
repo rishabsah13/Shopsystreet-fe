@@ -7,7 +7,8 @@ import { getProducts, createPaymentIntent, confirmPayment } from './api';
 import AddProductForm from './components/AddProductForm';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import axios from "axios"
+// import axios from "./api"
+import axios from 'axios';
 
 function App() {
   const API_URL = process.env.REACT_APP_API_URL;
@@ -18,9 +19,6 @@ function App() {
   const stripePromise = loadStripe('pk_test_51MH45uSCnhOlwfSWqQ09Me2bwVQ1AN9J11VTHmuQxX1E54OzQJHWIugLzR6E0RBVJrB42MI5mV5pIBxHk9Eb4bl300m7RSOmJi');
 
   
-  useEffect(() => {
-    fetchProducts();
-  }, []);
 
   const fetchProducts = async () => {
     try {
