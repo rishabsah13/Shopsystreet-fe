@@ -22,8 +22,7 @@ function App() {
     fetchProducts();
   }, []);
 
-   useEffect(()=>{
-      const fetchProducts = async () => {
+  const fetchProducts = async () => {
     try {
       const response = await axios.get('https://shopsystreet-8.onrender.com/api/products',{
         withCredentials: true,
@@ -32,8 +31,11 @@ function App() {
     } catch (error) {
       console.error('Error fetching products:', error);
     }
-  }
-  },[])
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   const toggleCart = () => {
     setCartOpen(!cartOpen);
