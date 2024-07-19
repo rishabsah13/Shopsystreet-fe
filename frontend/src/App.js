@@ -20,9 +20,24 @@ function App() {
 
   
 
-  const fetchProducts = async () => {
+  // const fetchProducts = async () => {
+  //   try {
+  //     const response = await axios.get('https://shopsystreet-8.onrender.com/api/products',{
+  //       withCredentials: true,
+  //     });
+  //     setProducts(response.data);
+  //   } catch (error) {
+  //     console.error('Error fetching products:', error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchProducts();
+  // }, []);
+
+   const fetchProducts = async () => {
     try {
-      const response = await axios.get('https://shopsystreet-8.onrender.com/api/products',{
+      const response = await axios.get('https://shopsystreet-8.onrender.com/api/products', {
         withCredentials: true,
       });
       setProducts(response.data);
@@ -32,8 +47,16 @@ function App() {
   };
 
   useEffect(() => {
-    fetchProducts();
+    fetchProducts(); // Initial fetch
+
+    const intervalId = setInterval(() => {
+      fetchProducts();
+    }, 5000); // Fetch every 5 seconds
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(intervalId);
   }, []);
+
 
   const toggleCart = () => {
     setCartOpen(!cartOpen);
